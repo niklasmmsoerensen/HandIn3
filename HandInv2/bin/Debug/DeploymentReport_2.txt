@@ -1,0 +1,41 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Efternavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to 
+         NVARCHAR (20) NOT NULL. Data loss could occur.
+       The type for column Fornavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to 
+         NVARCHAR (20) NOT NULL. Data loss could occur.
+       The type for column Mellemnavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to 
+         NVARCHAR (20) NOT NULL. Data loss could occur.
+       The type for column PersonType in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to 
+         NVARCHAR (20) NOT NULL. Data loss could occur.
+       The type for column TelefonNummer in table [dbo].[Telefon] is currently  NVARCHAR (255) NOT NULL but is being changed to
+          NVARCHAR (20) NOT NULL. Data loss could occur.
+       The type for column TelefonType in table [dbo].[Telefon] is currently  NVARCHAR (255) NOT NULL but is being changed to 
+         NVARCHAR (20) NOT NULL. Data loss could occur.
+
+** User actions
+     Drop
+       [dbo].[fk_PersonAdresse2] (Foreign Key)
+     Alter
+       [dbo].[Adresse] (Table)
+       [dbo].[Person] (Table)
+       [dbo].[Telefon] (Table)
+     Create
+       [dbo].[fk_PersonAdresse2] (Foreign Key)
+
+** Supporting actions
+
+The type for column Efternavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The type for column Fornavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The type for column Mellemnavn in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The type for column PersonType in table [dbo].[Person] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The type for column TelefonNummer in table [dbo].[Telefon] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The type for column TelefonType in table [dbo].[Telefon] is currently  NVARCHAR (255) NOT NULL but is being changed to  NVARCHAR (20) NOT NULL. Data loss could occur.
+The project and target databases have different collation settings. Deployment errors might occur.
+

@@ -1,0 +1,5 @@
+C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\bin\Debug\HandInv2.dacpac
+C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\bin\Debug\HandInv2.dll
+C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\bin\Debug\HandInv2.pdb
+C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\obj\Debug\HandInv2.dll
+C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\obj\Debug\HandInv2.pdb

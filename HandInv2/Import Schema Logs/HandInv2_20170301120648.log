@@ -1,0 +1,80 @@
+01-03-2017 13:06:48	This log contains information about the import schema operation into project 'HandInv2' on computer 'DESKTOP-8OKP4QQ' by user 'nikla'.
+01-03-2017 13:06:48	Import of database schema has started.
+01-03-2017 13:06:58	Gathering database options
+01-03-2017 13:06:58	Gathering users
+01-03-2017 13:06:58	Gathering roles
+01-03-2017 13:06:58	Gathering application roles
+01-03-2017 13:06:58	Gathering role memberships
+01-03-2017 13:06:58	Gathering filegroups
+01-03-2017 13:06:58	Gathering full-text catalogs
+01-03-2017 13:06:58	Gathering assemblies
+01-03-2017 13:06:58	Gathering certificates
+01-03-2017 13:06:58	Gathering asymmetric keys
+01-03-2017 13:06:58	Gathering symmetric keys
+01-03-2017 13:06:58	Gathering encrypted symmetric keys
+01-03-2017 13:06:58	Gathering schemas
+01-03-2017 13:06:58	Gathering XML schema collections
+01-03-2017 13:06:58	Gathering user-defined data types
+01-03-2017 13:06:58	Gathering user-defined types
+01-03-2017 13:06:58	Gathering table types
+01-03-2017 13:06:58	Gathering unique keys for table types
+01-03-2017 13:06:58	Gathering primary keys for table types
+01-03-2017 13:06:58	Gathering indexes for table types
+01-03-2017 13:06:58	Gathering check constraints for table types
+01-03-2017 13:06:58	Gathering default constraints for table types
+01-03-2017 13:06:58	Gathering partition functions
+01-03-2017 13:06:58	Gathering partition schemes
+01-03-2017 13:06:58	Gathering functions
+01-03-2017 13:06:58	Gathering encrypted functions
+01-03-2017 13:06:58	Gathering aggregates
+01-03-2017 13:06:58	Gathering procedures
+01-03-2017 13:06:58	Gathering encrypted procedures
+01-03-2017 13:06:58	Gathering tables
+01-03-2017 13:06:58	Gathering primary keys
+01-03-2017 13:06:58	Gathering unique constraints
+01-03-2017 13:06:58	Gathering foreign keys
+01-03-2017 13:06:58	Gathering default constraints
+01-03-2017 13:06:58	Gathering check constraints
+01-03-2017 13:06:58	Gathering views
+01-03-2017 13:06:58	Gathering encrypted views
+01-03-2017 13:06:58	Gathering indexes
+01-03-2017 13:06:58	Gathering statistics
+01-03-2017 13:06:58	Gathering full-text index stoplists
+01-03-2017 13:06:58	Gathering search property lists
+01-03-2017 13:06:58	Gathering search properties
+01-03-2017 13:06:58	Gathering full-text indexes
+01-03-2017 13:06:58	Gathering column store indexes
+01-03-2017 13:06:58	Gathering spatial indexes
+01-03-2017 13:06:58	Gathering XML indexes
+01-03-2017 13:06:58	Gathering Selective XML indexes
+01-03-2017 13:06:58	Gathering encrypted triggers
+01-03-2017 13:06:58	Gathering triggers
+01-03-2017 13:06:58	Gathering encrypted and clr ddl triggers
+01-03-2017 13:06:59	Gathering ddl triggers
+01-03-2017 13:06:59	Gathering synonyms
+01-03-2017 13:06:59	Gathering defaults
+01-03-2017 13:06:59	Gathering data constraint uddt bindings
+01-03-2017 13:06:59	Gathering rules
+01-03-2017 13:06:59	Gathering data constraint uddt bindings
+01-03-2017 13:06:59	Gathering message types
+01-03-2017 13:06:59	Gathering queues
+01-03-2017 13:06:59	Gathering contracts
+01-03-2017 13:06:59	Gathering services
+01-03-2017 13:06:59	Gathering event notifications
+01-03-2017 13:06:59	Gathering remote service bindings
+01-03-2017 13:06:59	Gathering broker priorities
+01-03-2017 13:06:59	Gathering signatures
+01-03-2017 13:06:59	Gathering data compression options
+01-03-2017 13:06:59	Gathering sequence types
+01-03-2017 13:06:59	Gathering security policies
+01-03-2017 13:06:59	Gather column encryption keys
+01-03-2017 13:06:59	Gathering column master keys
+01-03-2017 13:06:59	Gathering external data sources
+01-03-2017 13:06:59	Gathering external file formats
+01-03-2017 13:06:59	Gathering external tables
+01-03-2017 13:06:59	Gathering extended properties
+01-03-2017 13:06:59	Scanning project for duplicate elements
+01-03-2017 13:06:59	Finished duplicate element processing
+01-03-2017 13:07:00	Finished importing database.
+01-03-2017 13:07:00	A summary of the import was saved to the following location: C:\Users\nikla\Documents\Visual Studio 2015\Projects\DAB\HandIn2\HandIn2\HandInv2\Import Schema Logs\HandInv2_20170301120648.log
+01-03-2017 13:07:00	Click Finish to continue...
