@@ -218,6 +218,45 @@ namespace DataAccessTier
                 throw;
             }
         }
+        public void DeleteCurrentPerson(Person person)
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // prepare command string
+                string deleteString =
+                   @"DELETE FROM [Person]
+                        WHERE (Fornavn = @Data1 AND  @Data2 = Mellemnavn AND @Data3 = Efternavn)";
+                using (SqlCommand cmd = new SqlCommand(deleteString, conn))
+                {
+                    // Get your parameters ready 
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data1";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data2";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data3";
+
+                    cmd.Parameters["@Data1"].Value = person.Fornavn;
+                    cmd.Parameters["@Data2"].Value = person.Mellemnavn;
+                    cmd.Parameters["@Data3"].Value = person.Efternavn;
+
+
+                    var id = (int)cmd.ExecuteNonQuery(); //Returns thenumber of tuple/record affected
+                    locPerson = null;
+
+                }
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
     }
 }
 
