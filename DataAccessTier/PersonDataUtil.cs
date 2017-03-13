@@ -36,7 +36,6 @@ namespace DataAccessTier
 
                 string telefonString = @"
                     INSERT INTO [Telefon] (TelefonType, TelefonNummer, PersonID)
-                        OUTPUT INSERTED.TelefonID
                         VALUES (@Data5, @Data6, @Data7)";
 
 
@@ -73,6 +72,59 @@ namespace DataAccessTier
                     cmd.Parameters["@Data5"].Value = tlfType;
                     cmd.Parameters["@Data6"].Value = tlfNr;
                     cmd.Parameters["@Data7"].Value = personid;
+
+                    cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void addAdress(long personId, Adresse adresse) // tilføj en adresse til en person
+        {
+            try
+            {
+                conn.Open();
+
+                string adressString = @"
+                    INSERT INTO [Adresse] (Vejnavn, Husnummer, Postnummer)
+                        OUTPUT INSERTED.AdresseID
+                        VALUES (@Data1, @Data2, @Data3)";
+
+                string PersonAdresseString = @"
+                    INSERT INTO [PersonAdresse] (PersonID, AdresseID)
+                        VALUES (@Data4, @Data5)";
+
+
+                long adresseId;
+
+                //command til adresse
+                using (SqlCommand cmd = new SqlCommand(adressString, conn))
+                {
+                    // Person parametre
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data1";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data2";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data3";
+                    cmd.Parameters["@Data1"].Value = adresse.Vejnavn;
+                    cmd.Parameters["@Data2"].Value = adresse.Husnummer;
+                    cmd.Parameters["@Data3"].Value = adresse.Postnummer;
+
+                    adresseId = (long)cmd.ExecuteScalar();
+
+                }
+
+                // command til PersonAdresse entitet
+                using (SqlCommand cmd = new SqlCommand(PersonAdresseString, conn))
+                {
+
+                    // Telefon parametre
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data4";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data5";
+                    cmd.Parameters["@Data4"].Value = personId;
+                    cmd.Parameters["@Data5"].Value = adresseId;
 
                     cmd.ExecuteScalar();
                 }
