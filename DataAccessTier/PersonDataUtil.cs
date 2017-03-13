@@ -83,6 +83,89 @@ namespace DataAccessTier
             }
         }
 
+
+        //Use case: Find Person ud fra telefonID
+        public void setCurrentPerson(long telefonID) // getCurrentPerson()
+        {
+            SqlDataReader rdr = null;
+
+            long personID = 0;
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Telefon WHERE (Telefonnummer ='" + telefonID + "')", conn);
+                
+                rdr = cmd.ExecuteReader();
+
+                // transfer data from result set to local model
+                if (rdr.HasRows)
+                {
+                    if (rdr.Read())
+                    {
+                        personID = (long) rdr["PersonID"];
+                    }
+                }
+                //  break; //Only the first comming Håndværker with name specified but here superflous   
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Person WHERE (PersonID ='" + personID + "')", conn);
+                
+                rdr = cmd.ExecuteReader();
+
+                // transfer data from result set to local model
+                if (rdr.HasRows)
+                {
+                    if (rdr.Read())
+                    {
+                            locPerson = new Person
+                            {
+                                PersonID = (long) rdr["PersonID"],
+                                Fornavn = (string) rdr["Fornavn"],
+                                Mellemnavn = (string) rdr["Mellemnavn"],
+                                Efternavn = (string) rdr["Efternavn"],
+                                Persontype = (string) rdr["PersonType"]
+                            };
+                        }
+                    }
+                //  break; //Only the first comming Håndværker with name specified but here superflous
+            }
+            finally
+            {
+                // close the reader
+                if (rdr != null)
+                {
+                    rdr.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+
+
+        }
+
         public void addAdress(long personId, Adresse adresse) // tilføj en adresse til en person
         {
             try
