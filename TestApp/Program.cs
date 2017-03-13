@@ -23,6 +23,7 @@ namespace TestApp
             var dataUtil = new PersonDataUtil();
 
             dataUtil.insertPerson(testPerson);
+            dataUtil.DeleteCurrentPerson(testPerson);
 
 
         }

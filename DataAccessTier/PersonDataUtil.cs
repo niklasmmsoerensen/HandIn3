@@ -59,41 +59,8 @@ namespace DataAccessTier
                 Console.WriteLine(e);
                 throw;
             }
-        }
-
-        public void setCurrentPerson(long ID) // getCurrentPerson()
-        {
-            SqlDataReader rdr = null;
-
-            try
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Person WHERE (PersonID ='" + ID + "')", conn);
-
-                rdr = cmd.ExecuteReader();
-
-                // transfer data from result set to local model
-                while (rdr.Read())
-                {
-                    Console.WriteLine(rdr[0]);
-                    locPerson = new Håndværker();
-                    locPerson.HID = (int)rdr["HåndværkerID"];
-                    locPerson.Ansættelsedato = (DateTime)rdr["Ansættelsedato"];
-                    locPerson.Efternavn = (string)rdr["Efternavn"];
-                    locPerson.Fagområde = (string)rdr["Fagområde"];
-                    locPerson.Fornavn = (string)rdr["Fornavn"];
-                    //  break; //Only the first comming Håndværker with name specified but here superflous
-                }
-            }
             finally
             {
-                // close the reader
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-
                 // Close the connection
                 if (conn != null)
                 {
@@ -101,6 +68,49 @@ namespace DataAccessTier
                 }
             }
         }
+
+
+       
+
+        public void DeleteCurrentPerson(Person person)
+        {
+            try
+            {
+                // Open the connection
+                conn.Open();
+
+                // prepare command string
+                string deleteString =
+                   @"DELETE FROM [Person]
+                        WHERE (Fornavn = @Data1 AND  @Data2 = Mellemnavn AND @Data3 = Efternavn)";
+                  using (SqlCommand cmd = new SqlCommand(deleteString, conn))
+                {
+                    // Get your parameters ready 
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data1";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data2";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data3";
+
+                    cmd.Parameters["@Data1"].Value = person.Fornavn;
+                    cmd.Parameters["@Data2"].Value = person.Mellemnavn;
+                    cmd.Parameters["@Data3"].Value = person.Efternavn;
+
+
+                    var id = (int)cmd.ExecuteNonQuery(); //Returns thenumber of tuple/record affected
+                    locPerson = null;
+
+                }
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+
     }
 }
 
