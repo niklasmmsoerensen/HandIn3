@@ -8,9 +8,11 @@ namespace DataAccessTier
 {
     public class Person
     {
-        private string Fornavn { get; set; }
-        private string Mellemnavn { get; set; }
-        private string Efternavn { get; set; }
-        private string Persontype { get; set; }
+
+        public long PersonID { get; set; }
+        public string Fornavn { get; set; }
+        public string Mellemnavn { get; set; }
+        public string Efternavn { get; set; }
+        public string Persontype { get; set; }
     }
 }
