@@ -19,7 +19,10 @@ namespace DataAccessTier
 
         public PersonDataUtil()
         {
-            conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Handinv2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            //Local DB
+            //conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Handinv2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            //Remote DB
+            conn = new SqlConnection(@"Data Source=i4dab.ase.au.dk;Initial Catalog=F17I4DABH2Gr9;Integrated Security=False;User ID=F17I4DABH2Gr9;Password=F17I4DABH2Gr9;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
         
