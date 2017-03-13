@@ -22,7 +22,8 @@ namespace DataAccessTier
             conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Handinv2;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
 
-        public void insertPerson(Person person)
+        
+        public void insertPerson(Person person, int tlfNr, string tlfType) // telefon inkluderes, da en person ifølge kravene skal have en telefon. 
         {
             try
             {
@@ -33,72 +34,53 @@ namespace DataAccessTier
                         OUTPUT INSERTED.PersonID
                         VALUES (@Data1, @Data2, @Data3, @Data4)";
 
+                string telefonString = @"
+                    INSERT INTO [Telefon] (TelefonType, TelefonNummer, PersonID)
+                        OUTPUT INSERTED.TelefonID
+                        VALUES (@Data5, @Data6, @Data7)";
+
+
+                long personid;
+
+                //command til person
                 using (SqlCommand cmd = new SqlCommand(insertString, conn))
                 {
-                    // Get your parameters ready 
-                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data1"; //Works even whit lower case "d"
+                    // Person parametre
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data1";
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data2";
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data3";
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data4";
-                    cmd.Parameters["@Data1"].Value = person.Fornavn; //.ToString("yyyy-MM-dd HH:mm:ss"); ;
+                    cmd.Parameters["@Data1"].Value = person.Fornavn; 
                     cmd.Parameters["@Data2"].Value = person.Mellemnavn;
                     cmd.Parameters["@Data3"].Value = person.Efternavn;
                     cmd.Parameters["@Data4"].Value = person.Persontype;
 
-                    //var id 
-                    person.PersonID = (long)cmd.ExecuteScalar(); //Returns the identity of the new tuple/record
+                    personid = (long)cmd.ExecuteScalar();
+                    person.PersonID = personid;
 
-                    //hv.HID = (int)cmd.ExecuteNonQuery(); //Does not workReturns row affected and not the identity of the new tuple/record
+                    this.locPerson = person; 
 
-                    this.locPerson = person; //Make new Håndværker to currentHåndværker 
+                }
 
+                // command til telefon
+                using (SqlCommand cmd = new SqlCommand(telefonString, conn))
+                {
+
+                    // Telefon parametre
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data5";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data6";
+                    cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data7";
+                    cmd.Parameters["@Data5"].Value = tlfType;
+                    cmd.Parameters["@Data6"].Value = tlfNr;
+                    cmd.Parameters["@Data7"].Value = personid;
+
+                    cmd.ExecuteScalar();
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
-            }
-        }
-
-        public void setCurrentPerson(long ID) // getCurrentPerson()
-        {
-            SqlDataReader rdr = null;
-
-            try
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Person WHERE (PersonID ='" + ID + "')", conn);
-
-                rdr = cmd.ExecuteReader();
-
-                // transfer data from result set to local model
-                while (rdr.Read())
-                {
-                    Console.WriteLine(rdr[0]);
-                    locPerson = new Håndværker();
-                    locPerson.HID = (int)rdr["HåndværkerID"];
-                    locPerson.Ansættelsedato = (DateTime)rdr["Ansættelsedato"];
-                    locPerson.Efternavn = (string)rdr["Efternavn"];
-                    locPerson.Fagområde = (string)rdr["Fagområde"];
-                    locPerson.Fornavn = (string)rdr["Fornavn"];
-                    //  break; //Only the first comming Håndværker with name specified but here superflous
-                }
-            }
-            finally
-            {
-                // close the reader
-                if (rdr != null)
-                {
-                    rdr.Close();
-                }
-
-                // Close the connection
-                if (conn != null)
-                {
-                    conn.Close();
-                }
             }
         }
     }

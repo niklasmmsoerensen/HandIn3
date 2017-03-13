@@ -22,7 +22,7 @@ namespace TestApp
 
             var dataUtil = new PersonDataUtil();
 
-            dataUtil.insertPerson(testPerson);
+            dataUtil.insertPerson(testPerson, 28786322, "Privat");
 
 
         }
