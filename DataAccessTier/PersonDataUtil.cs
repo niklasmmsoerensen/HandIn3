@@ -49,15 +49,15 @@ namespace DataAccessTier
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data2";
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data3";
                     cmd.Parameters.Add(cmd.CreateParameter()).ParameterName = "@Data4";
-                    cmd.Parameters["@Data1"].Value = person.Fornavn; 
+                    cmd.Parameters["@Data1"].Value = person.Fornavn;
                     cmd.Parameters["@Data2"].Value = person.Mellemnavn;
                     cmd.Parameters["@Data3"].Value = person.Efternavn;
                     cmd.Parameters["@Data4"].Value = person.Persontype;
 
-                    personid = (long)cmd.ExecuteScalar();
+                    personid = (long) cmd.ExecuteScalar();
                     person.PersonID = personid;
 
-                    this.locPerson = person; 
+                    this.locPerson = person;
 
                 }
 
@@ -80,6 +80,11 @@ namespace DataAccessTier
             {
                 Console.WriteLine(e);
                 throw;
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
             }
         }
 
@@ -195,7 +200,7 @@ namespace DataAccessTier
                     cmd.Parameters["@Data2"].Value = adresse.Husnummer;
                     cmd.Parameters["@Data3"].Value = adresse.Postnummer;
 
-                    adresseId = (long)cmd.ExecuteScalar();
+                    adresseId = (long) cmd.ExecuteScalar();
 
                 }
 
@@ -216,6 +221,32 @@ namespace DataAccessTier
             {
                 Console.WriteLine(e);
                 throw;
+            }
+            finally
+            {
+                if (conn != null)
+                    conn.Close();
+            }
+        }
+
+        public void changePhoneOwner(long PhoneID, long newOwnerID)
+        {
+            try
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE Telefon SET PersonID='"+ newOwnerID +"' WHERE (TelefonID='" + PhoneID + "')", conn);
+
+                cmd.ExecuteScalar();
+
+            }
+            finally
+            {
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
     }
