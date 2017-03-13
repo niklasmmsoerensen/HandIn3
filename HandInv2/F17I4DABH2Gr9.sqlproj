@@ -68,8 +68,4 @@
     <Build Include="dbo\Tables\Telefon.sql" />
     <Build Include="dbo\Tables\PersonAdresse.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="CreateSchema.sql" />
-    <None Include="InsertSelectUpdateDeleteStatements.sql" />
-  </ItemGroup>
 </Project>

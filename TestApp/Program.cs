@@ -22,9 +22,11 @@ namespace TestApp
 
             var dataUtil = new PersonDataUtil();
 
-            dataUtil.insertPerson(testPerson);
+            //dataUtil.insertPerson(testPerson);
 
+            dataUtil.setCurrentPerson(11223347);
 
+            Console.WriteLine(dataUtil.currentPerson.Fornavn);
         }
     }
 }
