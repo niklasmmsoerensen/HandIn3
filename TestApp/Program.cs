@@ -22,8 +22,12 @@ namespace TestApp
 
             var dataUtil = new PersonDataUtil();
 
-            dataUtil.insertPerson(testPerson);
+           // dataUtil.insertPerson(testPerson, 12345678, "Privat");
             dataUtil.DeleteCurrentPerson(testPerson);
+
+            var adresse = new Adresse() {Husnummer = 20, Postnummer = 8920, Vejnavn = "Hampehaven"};
+
+            dataUtil.addAdress(20003, adresse);
 
 
         }
